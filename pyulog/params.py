@@ -50,7 +50,7 @@ def main():
 
     parser.add_argument('-r', '--truncate', dest='truncate', action='store_true',
                         help='Truncate floats.', default=False)
-    
+
     args = parser.parse_args()
     ulog_file_name = args.filename
     disable_str_exceptions = args.ignore
@@ -78,7 +78,8 @@ def main():
                 for t, name, value in ulog.changed_parameters:
                     if name == param_key:
                         output_file.write(delimiter)
-                        strval = "{:g}".format(value) if (args.truncate and isinstance(value, float)) else str(value)
+                        strval = "{:g}".format(value) if (
+                            args.truncate and isinstance(value, float)) else str(value)
                         output_file.write(strval)
 
                 output_file.write('\n')
@@ -98,7 +99,8 @@ def main():
                     for t, name, value in ulog.changed_parameters:
                         if name == param_key:
                             output_file.write(delimiter)
-                            strval = "{:g}".format(value) if (args.truncate and isinstance(value, float)) else str(value)
+                            strval = "{:g}".format(value) if (
+                                args.truncate and isinstance(value, float)) else str(value)
                             output_file.write(strval)
                 output_file.write('\n')
 
@@ -120,12 +122,14 @@ def main():
                 output_file.write('# columns: ')
                 output_file.write(str(len(values)) + '\n')
                 for value in values:
-                    strval = "{:g}".format(value) if (args.truncate and isinstance(value, float)) else str(value)
+                    strval = "{:g}".format(value) if (
+                        args.truncate and isinstance(value, float)) else str(value)
                     output_file.write(strval + ' ')
 
             else:
                 output_file.write('\n# type: scalar\n')
-                strval = "{:g}".format(values[0]) if (args.truncate and isinstance(values[0], float)) else str(values[0])
+                strval = "{:g}".format(values[0]) if (
+                    args.truncate and isinstance(values[0], float)) else str(values[0])
                 output_file.write(strval)
 
             output_file.write('\n')
@@ -144,7 +148,8 @@ def main():
             output_file.write(delimiter)
             output_file.write(param_key)
             output_file.write(delimiter)
-            strval = "{:g}".format(param_value) if (args.truncate and isinstance(param_value, float)) else str(param_value)
+            strval = "{:g}".format(param_value) if (
+                args.truncate and isinstance(param_value, float)) else str(param_value)
             output_file.write(strval)
             output_file.write(delimiter)
 
